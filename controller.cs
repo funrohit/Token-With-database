@@ -24,10 +24,10 @@ namespace TokenTest.Controllers
 
         [HttpGet]
         [Route("get/data")]
-        public List<UserRegister> get()
+        public List<User> get()
         {        
 
-            var res = _db.userRegisters.ToList();
+            var res = _db.users.ToList();
 
 
             return res;
