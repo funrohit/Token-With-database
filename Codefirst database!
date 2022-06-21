@@ -1,0 +1,76 @@
+using Microsoft.EntityFrameworkCore;
+
+namespace TokenTest.db
+{
+    public class dbcon:DbContext
+    {
+        public dbcon(DbContextOptions<dbcon>options):base(options)
+        {
+
+        }
+
+        public DbSet<UserRegister> userRegisters { get; set; }
+
+        public DbSet<User> users { get; set; }
+
+       
+    }
+}
+=======================================================================================================
+
+using System.ComponentModel.DataAnnotations;
+
+namespace TokenTest.db
+{
+    public class User
+    {
+        [Key]
+        public int Id { get; set; }
+
+        public string UserName { get; set; } =String.Empty;
+
+        public byte[] PasswordHash { get; set; }
+
+        public byte[] PasswordSault { get; set; }
+    }
+}
+
+
+=======================================================================================================================
+
+using System.ComponentModel.DataAnnotations;
+
+namespace TokenTest.db
+{
+    public class UserRegister
+    {
+
+        [Key]
+         public int Id { get; set; }    
+
+        public string UserName { get; set; }= String.Empty;
+
+        public string Password { get; set; } = String.Empty;
+
+    }
+}
+=======================================================================================================================
+
+Appsetting.json-----
+
+{
+  "AppSettings": {
+    "Token": "my top tokens and i doo job"
+  },
+
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "con": "Data Source=CHETUIWK1423\\MSSQL2019;Initial Catalog=Token;Integrated Security=True"
+  }
+}
